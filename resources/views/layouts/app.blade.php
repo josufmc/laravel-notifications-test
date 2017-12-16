@@ -48,8 +48,8 @@
                         @else
                             <li><a href="{{ route('home') }}">Enviar mensaje</a></li>
                             <li>
-                                <a href="#">Notification 
-                                    @if ($count = Auth::user()->notifications->count())
+                                <a href="{{ route('notifications.index') }}">Notification 
+                                    @if ($count = Auth::user()->unreadNotifications->count())
                                         <span class="badge">{{ $count }}</span>
                                     @endif
                                 </a>
