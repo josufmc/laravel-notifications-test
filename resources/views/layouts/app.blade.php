@@ -48,13 +48,7 @@
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
                             <li><a href="{{ route('messages.create') }}">Enviar mensaje</a></li>
-                            <li>
-                                <a href="{{ route('notifications.index') }}">Notification 
-                                    @if ($count = Auth::user()->unreadNotifications->count())
-                                        <span class="badge">{{ $count }}</span>
-                                    @endif
-                                </a>
-                            </li>
+                            <notifications></notifications>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -85,7 +79,6 @@
                 <div class="alert alert-success">{{ session('flash') }}</div>
             </div>
         @endif
-
         @yield('content')
     </div>
 

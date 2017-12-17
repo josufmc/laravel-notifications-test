@@ -30,6 +30,10 @@ class NotificationsController extends Controller
      */
     public function index()
     {
+        if (request()->ajax()){
+            return $this->authFactory->user()->unreadNotifications;   // No leidas
+        }
+
         $unreadNotifications = $this->authFactory->user()->unreadNotifications;   // No leidas
         $readNotifications = $this->authFactory->user()->readNotifications;       // Leidas
 
@@ -42,6 +46,11 @@ class NotificationsController extends Controller
     public function read($id){
         $notification = DatabaseNotification::find($id);
         $notification->markAsRead();
+
+        if (request()->ajax()){
+            return $this->authFactory->user()->unreadNotifications;   // No leidas
+        }
+
         return back()->with('flash', 'Notificación marcada como leída');
     }
 
