@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Notifications\MessageSent;
 use Illuminate\Contracts\Auth\Factory as AuthFactory;
 
-class HomeController extends Controller
+class MessagesController extends Controller
 {
     protected $authFactory;
     
@@ -29,7 +29,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function create()
     {
         $users = User::where('id', '!=', $this->authFactory->id())->get();
         
